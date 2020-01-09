@@ -1,15 +1,27 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin'); 
 
 module.exports = {
-    devServer: {
-        port: 80,
-        watchContentBase: true
-    },
-    entry: path.resolve(__dirname, 'src', 'main.js'),
-    mode: 'development',
-    output: {
-        filename: '[name].js',
-        path: path.resolve(__dirname)
-    },
-    target: 'web'
+	entry: path.resolve(__dirname, 'src', 'main.js'),
+	output: {
+		filename: '[name].js',
+		path: path.resolve(__dirname)
+	},
+	module: {
+		rules: [
+			{
+				test: [/\.sass$/],
+				use: [{ loader: MiniCSSExtractPlugin.loader }, 'css-loader', 'sass-loader']
+			},
+		],
+	},
+	plugins: [
+		new MiniCSSExtractPlugin({
+			filename: "[name].css"
+		})
+	],
+	devServer: {
+		port: 80,
+		watchContentBase: true
+	}
 }
