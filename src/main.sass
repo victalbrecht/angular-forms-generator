@@ -5,7 +5,8 @@ $navbar-brand-font-size: 1.2rem
 
 $body-bg: #f5f5f5
 $nav-bg: #0277bd
-$spacing: 20px
+$md-spacing: 20px
+$sm-spacing: 10px
 
 body
   height: 100vh
@@ -13,17 +14,20 @@ body
   background-color: $body-bg 
 
 nav 
-  padding: 0 $spacing
+  padding: 0 $md-spacing
   background-color: $nav-bg
 
 .navbar-fixed
-  margin-bottom: $spacing
+  margin-bottom: $sm-spacing
 
 .col 
-  padding: 0 $spacing !important
+  padding: $sm-spacing !important
+
+.row
+  padding: 0 $sm-spacing
 
 .card 
-  margin: 0 0 $spacing
+  margin: 0;
 
 .not-selectable 
   user-select: none
