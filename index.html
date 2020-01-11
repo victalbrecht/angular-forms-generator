@@ -24,14 +24,43 @@
 	<section>
 		<div class="row mb-0">
 			<div class="col s12 l6">
+				<h6 class="grey-text text-darken-1">Main Form Information</h6>
 				<div class="card">
-					<div class="card-content">
-						<span class="card-title grey-text text-darken-4">Card Title</span>
-						<p class="grey-text text-darken-1">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio expedita sequi praesentium alias
-							dolorum delectus, soluta fuga facilis quaerat, doloribus, ab obcaecati? Sed incidunt expedita nobis quos
-							eius, perferendis accusamus.
-						</p>
+					<div class="row mb-0">
+						<div class="input-field col s12 m6">
+							<input class="mb-0" id="form-name" type="text">
+							<label for="form-name">Form Name</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<input class="mb-0" id="inputs-quantity" type="number">
+							<label for="inputs-quantity">Inputs Quantity</label>
+						</div>
+					</div>
+				</div>
+				<h6 class="grey-text text-darken-1 mt-lg">Main Form Information</h6>
+				<div class="card">
+					<div class="row mb-0">
+						<div class="input-field col s12 m4">
+							<input class="mb-0" id="form-name" type="text">
+							<label for="form-name">Input Name</label>
+						</div>
+						<div class="input-field col s12 m4">
+							<select>
+								<option value="" disabled selected>Input Type</option>
+								<option value="email">Email</option>
+								<option value="password">Password</option>
+								<option value="text">Text</option>
+								<option value="number">Number</option>
+							</select>
+						</div>
+						<div class="input-field col s12 m4">
+							<p>
+								<label>
+									<input type="checkbox">
+									<span>Required</span>
+								</label>
+							</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -39,21 +68,26 @@
 				<div class="card" id="code-card">
 					<div class="card-tabs">
 						<ul class="tabs tabs-fixed-width" id="codeTabs">
-							<li class="tab"><a class="grey-text text-darken-2" href="#preview"><span class="fa fa-eye blue-text"></span> Preview</a></li>
-							<li class="tab"><a class="active grey-text text-darken-2" href="#template"><span class="fab fa-html5 orange-text"></span> Template</a></li>
-							<li class="tab"><a class="grey-text text-darken-2" href="#controller"><span class="fab fa-js yellow-text"></span> Controller</a></li>
+							<li class="tab"><a class="grey-text" href="#preview"><span class="fa fa-eye blue-text"></span> Preview</a>
+							</li>
+							<li class="tab"><a class="active grey-text text-darken-2" href="#template"><span
+										class="fab fa-html5 orange-text"></span> Template</a></li>
+							<li class="tab"><a class="grey-text text-darken-2" href="#controller"><span
+										class="fab fa-js yellow-text"></span> Controller</a></li>
 						</ul>
 					</div>
-					<div class="card-content grey lighten-4">
+					<div class="card-content grey lighten-4 full-tab-content">
 						<div id="preview">
 							1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
 							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
 							excepturi alias. Quidem.
 						</div>
 						<div id="template">
-							2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
-							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
-							excepturi alias. Quidem.
+							<p>
+								2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
+								illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
+								excepturi alias. Quidem.
+							</p>
 						</div>
 						<div id="controller">
 							3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus

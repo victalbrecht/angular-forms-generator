@@ -24,21 +24,33 @@ body
       svg
         position: relative
         bottom: -3px
-      font-size: 24px
-
-.col 
-  padding: $sm-spacing !important
+        font-size: 24px
 
 .row
   padding: 0 $sm-spacing
   margin-bottom: $sm-spacing
-
+  
 .card 
-  margin: 0
+  margin: $sm-spacing 0
   &#code-card
     height: calc(100vh - 54px - 20px - 20px)
 
 .not-selectable 
   user-select: none
 
+.full-tab-content 
+  height: calc(100% - 48px)
+  overflow: scroll
 
+.col .row 
+  margin-left: $sm-spacing
+  margin-right: $sm-spacing
+
+.mb-0
+  margin-bottom: 0
+
+.mt
+  margin-top: $md-spacing
+
+.mt-lg
+  margin-top: $md-spacing * 2
