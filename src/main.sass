@@ -1,22 +1,30 @@
 $navbar-height: 54px
 $navbar-brand-font-size: 1.2rem
 
+@import ~materialize-css/sass/components/color-variables
+
+$primary-color: color('indigo', 'lighten-2')
+
 @import ~materialize-css/sass/materialize
 
 $body-bg: #f5f5f5
-$nav-bg: #0277bd
 $md-spacing: 20px
 $sm-spacing: 10px
 
 body
   background-color: $body-bg 
 
-nav 
-  padding: 0 $md-spacing
-  background-color: $nav-bg
-
 .navbar-fixed
   margin-bottom: $sm-spacing
+  nav 
+    padding: 0 $md-spacing
+    .brand-logo
+      left: 0
+      transform: translateX(0%)
+      svg
+        position: relative
+        bottom: -3px
+      font-size: 24px
 
 .col 
   padding: $sm-spacing !important
@@ -27,16 +35,10 @@ nav
 
 .card 
   margin: 0
+  &#code-card
+    height: calc(100vh - 54px - 20px - 20px)
 
 .not-selectable 
   user-select: none
 
-.brand-logo
-  svg
-    position: relative
-    bottom: -3px
-    font-size: 24px
-
-#code-card
-  height: calc(100vh - 54px - 20px - 20px)
 
