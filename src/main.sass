@@ -9,8 +9,6 @@ $md-spacing: 20px
 $sm-spacing: 10px
 
 body
-  height: 100vh
-  width: 100vw
   background-color: $body-bg 
 
 nav 
@@ -25,9 +23,10 @@ nav
 
 .row
   padding: 0 $sm-spacing
+  margin-bottom: $sm-spacing
 
 .card 
-  margin: 0;
+  margin: 0
 
 .not-selectable 
   user-select: none
@@ -38,5 +37,6 @@ nav
     bottom: -3px
     font-size: 24px
 
-
+#code-card
+  height: calc(100vh - 54px - 20px - 20px)
 

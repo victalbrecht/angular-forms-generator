@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="main.js"></script>
+	<script src="main.js" defer></script>
 	<link rel="stylesheet" href="main.css">
 	<title>Angular Forms Generator</title>
 </head>
@@ -21,25 +21,45 @@
 		</nav>
 	</div>
 
-	<section id="main">
-		<div class="row">
+	<section>
+		<div class="row mb-0">
 			<div class="col s12 l6">
 				<div class="card">
 					<div class="card-content">
 						<span class="card-title grey-text text-darken-4">Card Title</span>
 						<p class="grey-text text-darken-1">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio expedita sequi praesentium alias dolorum delectus, soluta fuga facilis quaerat, doloribus, ab obcaecati? Sed incidunt expedita nobis quos eius, perferendis accusamus.
+							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio expedita sequi praesentium alias
+							dolorum delectus, soluta fuga facilis quaerat, doloribus, ab obcaecati? Sed incidunt expedita nobis quos
+							eius, perferendis accusamus.
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="col s12 l6">
-				<div class="card">
-					<div class="card-content">
-						<span class="card-title grey-text text-darken-4">Card Title</span>
-						<p class="grey-text text-darken-1">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit. Distinctio expedita sequi praesentium alias dolorum delectus, soluta fuga facilis quaerat, doloribus, ab obcaecati? Sed incidunt expedita nobis quos eius, perferendis accusamus.
-						</p>
+				<div class="card" id="code-card">
+					<div class="card-tabs">
+						<ul class="tabs tabs-fixed-width" id="codeTabs">
+							<li class="tab"><a class="disabled" href="#preview">Preview</a></li>
+							<li class="tab"><a class="active" href="#html">HTML</a></li>
+							<li class="tab"><a href="#typescript">TypeScript</a></li>
+						</ul>
+					</div>
+					<div class="card-content grey lighten-4">
+						<div id="preview">
+							1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
+							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
+							excepturi alias. Quidem.
+						</div>
+						<div id="html">
+							2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
+							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
+							excepturi alias. Quidem.
+						</div>
+						<div id="typescript">
+							3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
+							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
+							excepturi alias. Quidem.
+						</div>
 					</div>
 				</div>
 			</div>
