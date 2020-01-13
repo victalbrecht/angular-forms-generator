@@ -18,13 +18,15 @@ document.addEventListener('DOMContentLoaded', () =>  {
     <label for="inputName2">Input Name 2</label>
     <input type="type" class="form-control" id="inputName2" formControlName="inputName2">
   </div>
-  <button type="submit" class="btn btn-primary">Send</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!formName.valid">Send</button>
 </form>`;
 
   document.getElementById('typescript-code').innerText =
-`public formName: FormGroup = new FormGroup({
-  inputName1: new FormControl('valueInputName1'),
-  inputName2: new FormControl('valueInputName2')
+`constructor(private fb: FormBuilder) { }
+
+public formName: FormGroup = this.fb.group({
+  inputName1: ['',  [Validators.required, Validators.email]],
+  inputName2: ['', [Validators.required]]
 });
 
 public formNameSubmit = (formValue: any): void => {
