@@ -5,8 +5,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="main.js" defer></script>
 	<link rel="stylesheet" href="main.css">
+	<script src="main.js" defer></script>
 	<title>Angular Forms Generator</title>
 </head>
 
@@ -32,8 +32,8 @@
 							<label for="form-name">Form Name</label>
 						</div>
 						<div class="input-field col s12 m6">
-							<input class="mb-0" id="inputs-quantity" type="number">
-							<label for="inputs-quantity">Inputs Quantity</label>
+							<input class="mb-0" id="number-of-inputs" type="number">
+							<label for="number-of-inputs">Number of inputs</label>
 						</div>
 					</div>
 				</div>
@@ -42,8 +42,8 @@
 					<div class="card">
 						<div class="row mb-0">
 							<div class="input-field col s12 m4">
-								<input class="mb-0" id="form-name" type="text">
-								<label for="form-name">Input Name</label>
+								<input class="mb-0" id="input-name" type="text">
+								<label for="input-name">Input Name</label>
 							</div>
 							<div class="input-field col s12 m4">
 								<select>
@@ -78,23 +78,17 @@
 										class="fab fa-js yellow-text"></span> Controller</a></li>
 						</ul>
 					</div>
-					<div class="card-content grey lighten-4 full-tab-content">
+					<div class="card-content grey lighten-4 h-100">
 						<div id="preview">
 							1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
 							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
 							excepturi alias. Quidem.
 						</div>
 						<div id="template">
-							<p>
-								2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
-								illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
-								excepturi alias. Quidem.
-							</p>
+							<pre><code class="html" id="html-code"></code></pre>
 						</div>
 						<div id="controller">
-							3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
-							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
-							excepturi alias. Quidem.
+							<pre><code class="typescript" id="typescript-code"></code></pre>
 						</div>
 					</div>
 				</div>

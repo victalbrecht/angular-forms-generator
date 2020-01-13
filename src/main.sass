@@ -1,5 +1,12 @@
+$body-bg: #f5f5f5
+$md-spacing: 20px
+$sm-spacing: 10px
+
+@import ~highlight.js/styles/monokai
+
 $navbar-height: 54px
 $navbar-brand-font-size: 1.2rem
+$card-padding: $md-spacing
 
 @import ~materialize-css/sass/components/color-variables
 
@@ -8,12 +15,20 @@ $secondary-color: color('indigo', 'lighten-2')
 
 @import ~materialize-css/sass/materialize
 
-$body-bg: #f5f5f5
-$md-spacing: 20px
-$sm-spacing: 10px
-
 body
   background-color: $body-bg 
+
+#template, #controller
+  height: 100%
+  width: 100%
+  pre 
+    margin: 0
+    height: 100%
+    width: 100%
+    code
+      height: 100%
+      width: 100%
+      overflow: scroll
 
 .navbar-fixed
   margin-bottom: $sm-spacing
@@ -39,9 +54,8 @@ body
 .not-selectable 
   user-select: none
 
-.full-tab-content 
+.h-100
   height: calc(100% - 48px)
-  overflow: scroll
 
 .col .row 
   margin-left: $sm-spacing
@@ -49,9 +63,6 @@ body
 
 .mb-0
   margin-bottom: 0
-
-.mt
-  margin-top: $md-spacing
 
 .mt-lg
   margin-top: $md-spacing * 2
