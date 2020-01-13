@@ -16,23 +16,19 @@ export const controllerBoilerplate =
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-name",
-  templateUrl: "./name.component.html",
-  styleUrls: ["./name.component.css"]
+  selector: "app-{{componentName}}",
+  templateUrl: "./{{componentName}}.component.html",
+  styleUrls: ["./{{componentName}}.component.css"]
 })
-export class NameComponent implements OnInit {
-  public formName: FormGroup;
+export class {{componentName}}Component implements OnInit {
+  public {{formName}}: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  public formNameSubmit = (formValue: any): void => {
-    /* 
-      your submit code here 
-    */
-  };
+  public {{formName}}Submit = ({{formName}}Value: any): void => { };
 
   ngOnInit() { 
-    this.formName = this.fb.group({
+    this.{{formName}} = this.fb.group({
       inputName1: ['',  [Validators.required, Validators.email]],
       inputName2: ['', [Validators.required]]
     });
