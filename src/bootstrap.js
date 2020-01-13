@@ -22,16 +22,30 @@ document.addEventListener('DOMContentLoaded', () =>  {
 </form>`;
 
   document.getElementById('typescript-code').innerText =
-`constructor(private fb: FormBuilder) { }
+`import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-public formName: FormGroup = this.fb.group({
-  inputName1: ['',  [Validators.required, Validators.email]],
-  inputName2: ['', [Validators.required]]
-});
+@Component({
+  selector: "app-name",
+  templateUrl: "./name.component.html",
+  styleUrls: ["./name.component.css"]
+})
+export class NameComponent implements OnInit {
+  public formName: FormGroup;
 
-public formNameSubmit = (formValue: any): void => {
-  /* 
-    your submit code here 
-  */
-};`;
+  constructor(private fb: FormBuilder) { }
+
+  public formNameSubmit = (formValue: any): void => {
+    /* 
+      your submit code here 
+    */
+  };
+
+  ngOnInit() { 
+    this.formName = this.fb.group({
+      inputName1: ['',  [Validators.required, Validators.email]],
+      inputName2: ['', [Validators.required]]
+    });
+  }
+}`;
 });
