@@ -1,3 +1,5 @@
-import 'materialize-css/dist/js/materialize.min';
-import '@fortawesome/fontawesome-free/js/all'
-import './main.sass'
+'use strict';
+
+import './bootstrap';
+import '@fortawesome/fontawesome-free/js/all';
+import './main.sass';
