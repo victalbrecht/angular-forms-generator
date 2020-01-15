@@ -1,10 +1,11 @@
 'use strict';
 
-import './bootstrap';
-import '@fortawesome/fontawesome-free/js/all';
-import './main.sass';
-import handlebars from 'handlebars/dist/handlebars';
 import * as mat from 'materialize-css/dist/js/materialize.min';
+import '@fortawesome/fontawesome-free/js/all';
+import handlebars from 'handlebars/dist/handlebars';
+
+import './bootstrap';
+import './main.sass';
 
 let inputQuantity = 1;
 
@@ -14,7 +15,6 @@ window.refreshBoilerplateData = () => {
 
 window.deleteInputCard = inputId => {
   const inputCard = document.querySelector(`#input-card-${inputId}`);
-  console.log(inputCard)
   inputCard.parentNode.removeChild(inputCard);
   inputQuantity--;
 };
@@ -22,6 +22,7 @@ window.deleteInputCard = inputId => {
 window.addInputCard = () => {
   inputQuantity++;
   const newInputCard = handlebars.compile(document.getElementById('input-card').innerHTML);
-  document.getElementById('inputs').innerHTML += newInputCard({ inputCardId: inputQuantity });  
+  const domParser = new DOMParser().parseFromString(newInputCard({ inputCardId: inputQuantity }), "text/html");
+  document.getElementById('inputs').appendChild(domParser.body.children[0]);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputQuantity} select`));
 };
