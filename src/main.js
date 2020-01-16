@@ -6,23 +6,26 @@ import handlebars from 'handlebars/dist/handlebars';
 
 import './bootstrap';
 import './main.sass';
-import { BoilerplateParser } from './boilerplate/boilerplate-parser';
+import { BoilerplateController } from './boilerplate/boilerplate-controller';
 import { Utils } from './utils';
 
-const boilerplateParser = new BoilerplateParser();
+const boilerplateController = new BoilerplateController();
 const utils = new Utils();
 
 let inputCount = 1;
 let inputQuantity = 1;
 
 window.refreshBoilerplateData = () => {
-  const componentName = document.getElementById('component-name').value;
-  const formName = document.getElementById('form-name').value;
-  const codeData = {
-    componentName: utils.normalizeString(componentName),
-    formName: utils.normalizeString(formName)
-  };
-  boilerplateParser.renderCode(codeData);
+  const componentName = document.getElementById('component-name').value.trim();
+  const formName = document.getElementById('form-name').value.trim();
+  if (componentName && formName) {
+    const codeData = {
+      componentName: utils.normalizeString(componentName),
+      formName: utils.normalizeString(formName)
+    };
+    boilerplateController.renderCode(codeData);
+  } else
+    boilerplateController.destroyCode();
 };
 
 window.deleteInputCard = inputId => {
@@ -35,7 +38,7 @@ window.addInputCard = () => {
   inputCount++;
   inputQuantity++;
   const newInputCard = handlebars.compile(document.getElementById('input-card').innerHTML);
-  const domParser = new DOMParser().parseFromString(newInputCard({ inputCardId: inputCount }), 'text/html');
-  document.getElementById('inputs').appendChild(domParser.body.children[0]);
+  const domController = new DOMController().parseFromString(newInputCard({ inputCardId: inputCount }), 'text/html');
+  document.getElementById('inputs').appendChild(domController.body.children[0]);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputCount} select`));
 };

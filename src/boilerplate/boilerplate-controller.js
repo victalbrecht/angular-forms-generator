@@ -3,8 +3,8 @@ import hljs from 'highlight.js/lib/index';
 
 import * as boilerplate from './boilerplates';
 
-export class BoilerplateParser {
-  renderCode(codeData = { componentName: 'component', formName: 'form' }) {
+export class BoilerplateController {
+  renderCode(codeData) {
     const template = handlebars.compile(document.getElementById('template-boilerplate').innerHTML);
     const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
     document.getElementById('template-code').innerText = template(codeData);
@@ -13,7 +13,12 @@ export class BoilerplateParser {
     hljs.initHighlighting();
   }
 
-  renderInputCard() {
+  destroyCode() {
+    document.getElementById('template-code').innerText = '';
+    document.getElementById('controller-code').innerText = '';
+  }
+
+  renderNewInputCard() {
     const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
     document.getElementById('controller-code').innerText = controller(controllerData);
   }
