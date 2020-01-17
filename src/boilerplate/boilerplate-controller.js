@@ -1,9 +1,14 @@
 import handlebars from 'handlebars/dist/handlebars';
 import hljs from 'highlight.js/lib/index';
 
-import * as boilerplate from './boilerplates';
+import * as mat from 'materialize-css/dist/js/materialize.min';
 
 export class BoilerplateController {
+  constructor() {
+    this.inputCount = 1;
+    this.inputQuantity = 1;
+  }
+
   renderCode(codeData) {
     const template = handlebars.compile(document.getElementById('template-boilerplate').innerHTML);
     const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
@@ -19,7 +24,17 @@ export class BoilerplateController {
   }
 
   renderNewInputCard() {
-    const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
-    document.getElementById('controller-code').innerText = controller(controllerData);
+    this.inputCount++;
+    this.inputQuantity++;
+    const newInputCard = handlebars.compile(document.getElementById('input-card').innerHTML);
+    const domParser = new DOMParser().parseFromString(newInputCard({ inputCardId: this.inputCount }), 'text/html');
+    document.getElementById('inputs').appendChild(domParser.body.children[0]);
+    mat.FormSelect.init(document.querySelector(`#input-card-${this.inputCount} select`));
+  }
+
+  destroyInputCard(inputId) {
+    const inputCard = document.querySelector(`#input-card-${inputId}`);
+    inputCard.parentNode.removeChild(inputCard);
+    this.inputQuantity--;
   }
 }
