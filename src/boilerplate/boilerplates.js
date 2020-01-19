@@ -1,13 +1,11 @@
 export const templateBoilerplate = 
 `<form [formGroup]="{{formName}}" (ngSubmit)="{{formName}}Submit({{formName}}.value)">
+  {{#each inputList}}
   <div class="form-group">
-    <label for="inputName1">Input Name 1</label>
-    <input type="type" class="form-control" id="inputName1" formControlName="inputName1">
+    <label for="{{name}}">{{name}}</label>
+    <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}">
   </div>
-  <div class="form-group">
-    <label for="inputName2">Input Name 2</label>
-    <input type="type" class="form-control" id="inputName2" formControlName="inputName2">
-  </div>
+  {{/each}}
   <button type="submit" class="btn btn-primary" [disabled]="!{{formName}}.valid">Send</button>
 </form>`;
 
@@ -29,8 +27,37 @@ export class {{componentName}}Component implements OnInit {
 
   ngOnInit() { 
     this.{{formName}} = this.fb.group({
-      inputName1: ['',  [Validators.required, Validators.email]],
-      inputName2: ['', [Validators.required]]
+      {{#each inputList}}
+        {{name}}: ['',  [],
+      {{/each}}
     });
   }
 }`;
+
+export const inputCardBoilerplate = 
+`<div class="card" id="input-card-{{inputCardId}}">
+<div class="row mb-0 inputs-informations-card">
+  <div class="input-field col s12 m4">
+    <input class="mb-0" id="input-name" type="text">
+    <label for="input-name">Input name</label>
+  </div>
+  <div class="input-field col s12 m4">
+    <select>
+      <option value="" disabled selected>Input type</option>
+      <option value="email">Email</option>
+      <option value="password">Password</option>
+      <option value="text">Text</option>
+      <option value="number">Number</option>
+    </select>
+  </div>
+  <div class="input-field col s12 m4">
+    <p>
+      <label>
+        <input type="checkbox">
+        <span>Required</span>
+      </label>
+    </p>
+  </div>
+  <a class="btn-floating btn-small waves-effect waves-light red" onclick="deleteInputCard({{inputCardId}})"><span class="fa fa-times"></span></a>
+</div>
+</div>`;

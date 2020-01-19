@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () =>  {
 
   document.getElementById('template-boilerplate').innerHTML = boilerplate.templateBoilerplate;
   document.getElementById('controller-boilerplate').innerHTML = boilerplate.controllerBoilerplate;
+  document.getElementById('input-card-boilerplate').innerHTML = boilerplate.inputCardBoilerplate;
 
   hljs.initHighlightingOnLoad();
 });
