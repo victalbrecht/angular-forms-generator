@@ -2,9 +2,6 @@ import * as mat from 'materialize-css/dist/js/materialize.min';
 import hljs from 'highlight.js/lib/index';
 
 import * as boilerplate from './boilerplate/boilerplates';
-import { Utils } from './utils';
-
-const utils = new Utils();
 
 document.addEventListener('DOMContentLoaded', () =>  {
   mat.FormSelect.init(document.querySelectorAll('select'));
