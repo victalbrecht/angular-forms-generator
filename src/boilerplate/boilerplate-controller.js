@@ -6,13 +6,22 @@ import { camelizeString } from '../utils';
 
 let inputCount = 1;
 
-export const renderCode = codeData => {
-  const template = handlebars.compile(document.getElementById('template-boilerplate').innerHTML);
-  const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
-  document.getElementById('template-code').innerText = template(codeData);
-  document.getElementById('controller-code').innerText = controller(codeData);
+export const renderCode = () => {
+  document.getElementById('template-code').innerText = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
+  document.getElementById('controller-code').innerText = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  document.getElementById('export-component-button').classList.remove('disabled');
   hljs.initHighlighting.called = false;
   hljs.initHighlighting();
+  renderPreview();
+};
+
+export const compileBoilerplate = boilerplateRef => {
+  const codeData = {
+    componentName: window.componentName,
+    formName: window.formName,
+    inputList: getInputCardsValues()
+  };
+  return handlebars.compile(boilerplateRef)(codeData);
 };
 
 export const renderPreview = () => {
@@ -26,7 +35,8 @@ export const renderPreview = () => {
 export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
-  document.getElementById('preview-container').innerHTML = '';
+  document.getElementById('preview-container').contentDocument.documentElement.innerHTML = '';
+  document.getElementById('export-component-button').classList.add('disabled');
 };
 
 export const renderNewInputCard = () => {
@@ -50,6 +60,6 @@ export const getInputCardsValues = () => {
       rawName: inputCard.children[0].children[0].children[0].value,
       type: camelizeString(inputCard.children[0].children[1].children[0].children[0].value),
       required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
-    }
+    };
   });
 };

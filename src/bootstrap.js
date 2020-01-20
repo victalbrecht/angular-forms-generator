@@ -5,7 +5,7 @@ import * as boilerplates from './boilerplate/boilerplates';
 
 document.addEventListener('DOMContentLoaded', () =>  {
   mat.FormSelect.init(document.querySelectorAll('select'));
-  mat.Tabs.init(document.getElementById('codeTabs'));
+  mat.Tabs.init(document.getElementById('code-tabs'));
 
   document.getElementById('template-boilerplate').innerHTML = boilerplates.templateBoilerplate;
   document.getElementById('controller-boilerplate').innerHTML = boilerplates.controllerBoilerplate;
