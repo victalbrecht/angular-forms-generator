@@ -4,27 +4,26 @@ import '@fortawesome/fontawesome-free/js/all';
 
 import './bootstrap';
 import './main.sass';
-import { BoilerplateController } from './boilerplate/boilerplate-controller';
-import { Utils } from './utils';
-
-const boilerplateController = new BoilerplateController();
-const utils = new Utils();
+import * as boilerplateController from './boilerplate/boilerplate-controller';
+import { camelizeString } from './utils';
 
 window.refreshBoilerplateData = () => {
-  const componentName = document.getElementById('component-name').value.trim();
-  const formName = document.getElementById('form-name').value.trim();
+  const componentName = document.getElementById('component-name').value;
+  const formName = document.getElementById('form-name').value;
   if (componentName && formName) {
     const codeData = {
-      componentName: utils.camelizeString(componentName),
-      formName: utils.camelizeString(formName),
-      inputList: utils.getInputCardsValues()
+      componentName: camelizeString(componentName),
+      formName: camelizeString(formName),
+      inputList: boilerplateController.getInputCardsValues()
     };
-    console.log(codeData)
     boilerplateController.renderCode(codeData);
   } else
     boilerplateController.destroyCode();
 };
 
-window.deleteInputCard = inputId => boilerplateController.destroyInputCard(inputId);
+window.deleteInputCard = inputId => { 
+  boilerplateController.destroyInputCard(inputId);
+  refreshBoilerplateData();
+};
 
 window.addInputCard = () => boilerplateController.renderNewInputCard();

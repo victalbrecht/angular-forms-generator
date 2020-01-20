@@ -1,12 +1,12 @@
 export const templateBoilerplate = 
-`<form [formGroup]="{{formName}}" (ngSubmit)="{{formName}}Submit({{formName}}.value)">
+`<form [formGroup]="{{formName}}Form" (ngSubmit)="{{formName}}FormSubmit({{formName}}Form.value)">
   {{#each inputList}}
   <div class="form-group">
     <label for="{{name}}">{{rawName}}</label>
-    <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}">
+    <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}"{{#if required}} required{{/if}}>
   </div>
   {{/each}}
-  <button type="submit" class="btn btn-primary" [disabled]="!{{formName}}.valid">Send</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!{{formName}}Form.valid">Send</button>
 </form>`;
 
 export const controllerBoilerplate = 
@@ -19,16 +19,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ["./{{componentName}}.component.css"]
 })
 export class {{componentName}}Component implements OnInit {
-  public {{formName}}: FormGroup;
+  public {{formName}}Form: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  public {{formName}}Submit = ({{formName}}Value: any): void => { };
+  public {{formName}}FormSubmit = ({{formName}}FormValue: any): void => { };
 
   ngOnInit() { 
-    this.{{formName}} = this.fb.group({
+    this.{{formName}}Form = this.fb.group({
       {{#each inputList}}
-        {{name}}: ['',  []],
+      {{name}}: ['',  [{{#if required}}Validators.required{{/if}}]],
       {{/each}}
     });
   }
@@ -42,7 +42,7 @@ export const inputCardBoilerplate =
     <label for="input-name-{{inputCardId}}">Input name</label>
   </div>
   <div class="input-field col s12 m4">
-    <select autocomplete="off" onchange="refreshBoilerplateData()">
+    <select autocomplete="off">
       <option value="" disabled selected>Input type</option>
       <option value="email">Email</option>
       <option value="password">Password</option>
@@ -53,7 +53,7 @@ export const inputCardBoilerplate =
   <div class="input-field col s12 m4">
     <p>
       <label>
-        <input type="checkbox" autocomplete="off">
+        <input type="checkbox" autocomplete="off" onchange="refreshBoilerplateData()">
         <span>Required</span>
       </label>
     </p>
