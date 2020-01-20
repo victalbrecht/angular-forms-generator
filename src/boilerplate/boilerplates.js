@@ -43,12 +43,12 @@ export const inputCardBoilerplate =
   </div>
   <div class="input-field col s12 m4">
     <select autocomplete="off">
-      <option value="" disabled selected>Input type</option>
+      <option value="text" selected>Text</option>
       <option value="email">Email</option>
       <option value="password">Password</option>
-      <option value="text">Text</option>
       <option value="number">Number</option>
     </select>
+    <label>Input type</label>
   </div>
   <div class="input-field col s12 m4">
     <p>

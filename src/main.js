@@ -8,9 +8,10 @@ import * as boilerplateController from './boilerplate/boilerplate-controller';
 import { camelizeString } from './utils';
 
 window.refreshBoilerplateData = () => {
-  const componentName = document.getElementById('component-name').value;
-  const formName = document.getElementById('form-name').value;
-  if (componentName && formName) {
+  const componentName = document.getElementById('component-name').value.trim();
+  const formName = document.getElementById('form-name').value.trim();
+  const firstInputName = document.getElementById('input-name-1').value.trim();
+  if (componentName && formName && firstInputName) {
     const codeData = {
       componentName: camelizeString(componentName),
       formName: camelizeString(formName),

@@ -34,13 +34,13 @@ export const destroyInputCard = inputId => {
 };
 
 export const getInputCardsValues = () => {
-  return [...document.getElementById('inputs').children].length ?
-    [...document.getElementById('inputs').children].map(x => {
-      return {
-        name: camelizeString(x.children[0].children[0].children[0].value),
-        rawName: x.children[0].children[0].children[0].value,
-        type: camelizeString(x.children[0].children[1].children[0].children[0].value),
-        required: x.children[0].children[2].children[0].children[0].children[0].checked
-      }
-    }) : [];
+  const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
+  return filledInputCards.map(inputCard => {
+    return {
+      name: camelizeString(inputCard.children[0].children[0].children[0].value),
+      rawName: inputCard.children[0].children[0].children[0].value,
+      type: camelizeString(inputCard.children[0].children[1].children[0].children[0].value),
+      required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
+    }
+  });
 };
