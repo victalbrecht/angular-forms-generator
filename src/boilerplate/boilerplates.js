@@ -38,11 +38,11 @@ export const inputCardBoilerplate =
 `<div class="card" id="input-card-{{inputCardId}}">
 <div class="row mb-0 inputs-informations-card">
   <div class="input-field col s12 m4">
-    <input class="mb-0" id="input-name-{{inputCardId}}" type="text" autocomplete="off">
+    <input class="mb-0" id="input-name-{{inputCardId}}" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
     <label for="input-name-{{inputCardId}}">Input name</label>
   </div>
   <div class="input-field col s12 m4">
-    <select autocomplete="off">
+    <select autocomplete="off" onchange="refreshBoilerplateData()">
       <option value="" disabled selected>Input type</option>
       <option value="email">Email</option>
       <option value="password">Password</option>

@@ -15,13 +15,11 @@ window.refreshBoilerplateData = () => {
   const formName = document.getElementById('form-name').value.trim();
   if (componentName && formName) {
     const codeData = {
-      componentName: utils.normalizeString(componentName),
-      formName: utils.normalizeString(formName),
-      inputList: [
-        { name: 'username', rawName: 'Username', type: 'text', required: false }, 
-        { name: 'email', rawName: 'Email', type: 'email', required: true }
-      ]
+      componentName: utils.camelizeString(componentName),
+      formName: utils.camelizeString(formName),
+      inputList: utils.getInputCardsValues()
     };
+    console.log(codeData)
     boilerplateController.renderCode(codeData);
   } else
     boilerplateController.destroyCode();
