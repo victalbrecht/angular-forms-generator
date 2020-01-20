@@ -23,8 +23,8 @@ $secondary-color: color('deep-purple', 'darken-3')
 body
   background-color: $body-bg 
 
-#template, #controller, #preview
-  height: 100%
+#tabs-containers div#utility-header ~ div
+  height: calc(100% - 36px - 20px)
   width: 100%
   pre 
     margin: 0
@@ -39,6 +39,9 @@ body
     background-color: white
     height: 100%
     width: 100%
+
+#utility-header 
+  height: calc(36px + 20px);
 
 .navbar-fixed
   margin-bottom: $sm-spacing
@@ -121,8 +124,11 @@ body
   &-flex
     display: flex
 
-.justify-content-center
-  justify-content: center
+.justify-content
+  &-center
+    justify-content: center
+  &-end
+    justify-content: end
 
 .inputs-informations-card
   position: relative

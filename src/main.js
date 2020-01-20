@@ -29,3 +29,5 @@ window.deleteInputCard = inputId => {
 };
 
 window.addInputCard = () => boilerplateController.renderNewInputCard();
+
+window.exportComponent = () => { };

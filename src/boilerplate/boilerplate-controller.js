@@ -13,6 +13,7 @@ export const renderCode = codeData => {
   document.getElementById('controller-code').innerText = controller(codeData);
   hljs.initHighlighting.called = false;
   hljs.initHighlighting();
+  document.getElementById('export-component-button').classList.remove('disabled');
 };
 
 export const renderPreview = () => {
@@ -26,7 +27,8 @@ export const renderPreview = () => {
 export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
-  document.getElementById('preview-container').innerHTML = '';
+  document.getElementById('preview-container').contentDocument.documentElement.innerHTML = '';
+  document.getElementById('export-component-button').classList.add('disabled');
 };
 
 export const renderNewInputCard = () => {

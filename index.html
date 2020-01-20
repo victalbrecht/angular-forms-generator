@@ -76,25 +76,38 @@
 			<div class="col s12 l6">
 				<div class="card" id="code-card">
 					<div class="card-tabs">
-						<ul class="tabs tabs-fixed-width" id="codeTabs">
+						<ul class="tabs tabs-fixed-width" id="code-tabs">
 							<li class="tab"><a class="grey-text text-darken-2" href="#preview"><span
 										class="fa fa-eye blue-text"></span> Preview</a>
 							</li>
 							<li class="tab"><a class="active grey-text text-darken-2" href="#template"><span
 										class="fab fa-html5 orange-text"></span> Template</a></li>
+							<li class="tab"><a class="grey-text text-darken-2" href="#styles"><span
+										class="fab fa-css3-alt blue-text"></span> Styles</a></li>
 							<li class="tab"><a class="grey-text text-darken-2" href="#controller"><span
 										class="fab fa-js yellow-text"></span> Controller</a></li>
+							<li class="tab"><a class="grey-text text-darken-2" href="#model"><span
+										class="fab fa-js yellow-text"></span> Model</a></li>
 						</ul>
 					</div>
-					<div class="card-content grey lighten-4 h-100">
+					<div class="card-content grey lighten-4 h-100" id="tabs-containers">
+						<div id="utility-header" class="d-flex justify-content-end">
+							<a class="waves-effect waves-light btn disabled" onclick="exportComponent()" id="export-component-button"><span class="fa fa-file-export"></span> Export full component</a>
+						</div>
 						<div id="preview">
 							<iframe id="preview-container"></iframe>
 						</div>
 						<div id="template">
 							<pre><code class="html" id="template-code"></code></pre>
 						</div>
+						<div id="styles">
+							<pre><code class="css" id="styles-code"></code></pre>
+						</div>
 						<div id="controller">
 							<pre><code class="typescript" id="controller-code"></code></pre>
+						</div>
+						<div id="model">
+							<pre><code class="typescript" id="model-code"></code></pre>
 						</div>
 					</div>
 				</div>
