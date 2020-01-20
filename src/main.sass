@@ -23,7 +23,7 @@ $secondary-color: color('deep-purple', 'darken-3')
 body
   background-color: $body-bg 
 
-#template, #controller
+#template, #controller, #preview
   height: 100%
   width: 100%
   pre 
@@ -34,6 +34,11 @@ body
       height: 100%
       width: 100%
       overflow: scroll
+  #preview-container
+    padding: $sm-spacing
+    background-color: white
+    height: 100%
+    width: 100%
 
 .navbar-fixed
   margin-bottom: $sm-spacing
@@ -130,6 +135,5 @@ body
   .card:first-of-type ~ .card 
     margin-top: $md-spacing
 
-#preview
-  
-
+iframe
+  border: none

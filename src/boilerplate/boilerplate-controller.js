@@ -16,14 +16,17 @@ export const renderCode = codeData => {
 };
 
 export const renderPreview = () => {
-  const previewContainer = document.getElementById('preview');
-  previewContainer.innerHTML = document.getElementById('template-code').innerText;
+  const previewContainer = document.getElementById('preview-container').contentDocument;
+  previewContainer.open();
+  previewContainer.write('<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">');
+  previewContainer.write(document.getElementById('template-code').innerText);
+  previewContainer.close();
 };
 
 export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
-  document.getElementById('preview').innerHTML = '';
+  document.getElementById('preview-container').innerHTML = '';
 };
 
 export const renderNewInputCard = () => {

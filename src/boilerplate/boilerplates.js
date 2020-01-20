@@ -6,7 +6,7 @@ export const templateBoilerplate =
     <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}"{{#if required}} required{{/if}}>
   </div>
   {{/each}}
-  <button type="submit" class="btn btn-primary" [disabled]="!{{formName}}Form.valid">Send</button>
+  <button type="submit" class="btn btn-primary mt-2" [disabled]="!{{formName}}Form.valid">Send</button>
 </form>`;
 
 export const controllerBoilerplate = 
