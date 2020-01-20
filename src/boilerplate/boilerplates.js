@@ -10,13 +10,13 @@ export const templateBoilerplate =
 </form>`;
 
 export const controllerBoilerplate = 
-`import { Component, OnInit } from "@angular/core";
+`import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-{{componentName}}",
-  templateUrl: "./{{componentName}}.component.html",
-  styleUrls: ["./{{componentName}}.component.css"]
+  selector: 'app-{{componentName}}',
+  templateUrl: './{{componentName}}.component.html',
+  styleUrls: ['./{{componentName}}.component.css']
 })
 export class {{componentName}}Component implements OnInit {
   public {{formName}}Form: FormGroup;

@@ -6,14 +6,22 @@ import { camelizeString } from '../utils';
 
 let inputCount = 1;
 
-export const renderCode = codeData => {
-  const template = handlebars.compile(document.getElementById('template-boilerplate').innerHTML);
-  const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
-  document.getElementById('template-code').innerText = template(codeData);
-  document.getElementById('controller-code').innerText = controller(codeData);
+export const renderCode = () => {
+  document.getElementById('template-code').innerText = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
+  document.getElementById('controller-code').innerText = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  document.getElementById('export-component-button').classList.remove('disabled');
   hljs.initHighlighting.called = false;
   hljs.initHighlighting();
-  document.getElementById('export-component-button').classList.remove('disabled');
+  renderPreview();
+};
+
+export const compileBoilerplate = boilerplateRef => {
+  const codeData = {
+    componentName: window.componentName,
+    formName: window.formName,
+    inputList: getInputCardsValues()
+  };
+  return handlebars.compile(boilerplateRef)(codeData);
 };
 
 export const renderPreview = () => {
