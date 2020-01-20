@@ -52,6 +52,6 @@ export const getInputCardsValues = () => {
       rawName: inputCard.children[0].children[0].children[0].value,
       type: camelizeString(inputCard.children[0].children[1].children[0].children[0].value),
       required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
-    }
+    };
   });
 };
