@@ -2,7 +2,7 @@ export const templateBoilerplate =
 `<form [formGroup]="{{formName}}" (ngSubmit)="{{formName}}Submit({{formName}}.value)">
   {{#each inputList}}
   <div class="form-group">
-    <label for="{{name}}">{{name}}</label>
+    <label for="{{name}}">{{rawName}}</label>
     <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}">
   </div>
   {{/each}}
@@ -28,7 +28,7 @@ export class {{componentName}}Component implements OnInit {
   ngOnInit() { 
     this.{{formName}} = this.fb.group({
       {{#each inputList}}
-        {{name}}: ['',  [],
+        {{name}}: ['',  []],
       {{/each}}
     });
   }
@@ -38,11 +38,11 @@ export const inputCardBoilerplate =
 `<div class="card" id="input-card-{{inputCardId}}">
 <div class="row mb-0 inputs-informations-card">
   <div class="input-field col s12 m4">
-    <input class="mb-0" id="input-name" type="text">
+    <input class="mb-0" id="input-name" type="text" autocomplete="off">
     <label for="input-name">Input name</label>
   </div>
   <div class="input-field col s12 m4">
-    <select>
+    <select autocomplete="off">
       <option value="" disabled selected>Input type</option>
       <option value="email">Email</option>
       <option value="password">Password</option>
@@ -53,7 +53,7 @@ export const inputCardBoilerplate =
   <div class="input-field col s12 m4">
     <p>
       <label>
-        <input type="checkbox">
+        <input type="checkbox" autocomplete="off">
         <span>Required</span>
       </label>
     </p>

@@ -7,7 +7,6 @@ export class BoilerplateController {
   constructor() { this.inputCount = 1; }
 
   renderCode(codeData) {
-    codeData.inputList = [{ name: 'username', type: 'text', required: false }, { name: 'email',  type: 'email', required: true }];
     const template = handlebars.compile(document.getElementById('template-boilerplate').innerHTML);
     const controller = handlebars.compile(document.getElementById('controller-boilerplate').innerHTML);
     document.getElementById('template-code').innerText = template(codeData);

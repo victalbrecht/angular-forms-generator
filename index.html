@@ -28,11 +28,11 @@
 				<div class="card">
 					<div class="row mb-0">
 						<div class="input-field col s12 m6">
-							<input class="mb-0" id="component-name" type="text" onkeyup="refreshBoilerplateData()">
+							<input class="mb-0" id="component-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
 							<label for="component-name">Component name</label>
 						</div>
 						<div class="input-field col s12 m6">
-							<input class="mb-0" id="form-name" type="text" onkeyup="refreshBoilerplateData()">
+							<input class="mb-0" id="form-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
 							<label for="form-name">Form name</label>
 						</div>
 					</div>
@@ -42,11 +42,11 @@
 					<div id="input-card-1" class="card">
 						<div class="row mb-0 inputs-informations-card">
 							<div class="input-field col s12 m4">
-								<input class="mb-0" id="input-name" type="text">
+								<input class="mb-0" id="input-name" type="text" autocomplete="off">
 								<label for="input-name">Input name</label>
 							</div>
 							<div class="input-field col s12 m4">
-								<select>
+								<select autocomplete="off">
 									<option value="" disabled selected>Input type</option>
 									<option value="email">Email</option>
 									<option value="password">Password</option>
@@ -57,7 +57,7 @@
 							<div class="input-field col s12 m4">
 								<p>
 									<label>
-										<input type="checkbox">
+										<input type="checkbox" autocomplete="off">
 										<span>Required</span>
 									</label>
 								</p>

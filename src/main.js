@@ -16,7 +16,11 @@ window.refreshBoilerplateData = () => {
   if (componentName && formName) {
     const codeData = {
       componentName: utils.normalizeString(componentName),
-      formName: utils.normalizeString(formName)
+      formName: utils.normalizeString(formName),
+      inputList: [
+        { name: 'username', rawName: 'Username', type: 'text', required: false }, 
+        { name: 'email', rawName: 'Email', type: 'email', required: true }
+      ]
     };
     boilerplateController.renderCode(codeData);
   } else
