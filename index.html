@@ -21,55 +21,57 @@
 		</nav>
 	</div>
 
-	<section>
+	<main>
 		<div class="row mb-0">
 			<div class="col s12 l6">
 				<h6 class="grey-text text-darken-1">Component general information</h6>
-				<div class="card">
-					<div class="row mb-0">
-						<div class="input-field col s12 m4">
-							<input class="mb-0" id="component-name" type="text">
-							<label for="component-name">Component name</label>
-						</div>
-						<div class="input-field col s12 m4">
-							<input class="mb-0" id="form-name" type="text">
-							<label for="form-name">Form name</label>
-						</div>
-						<div class="input-field col s12 m4">
-							<input class="mb-0" id="number-of-inputs" type="number">
-							<label for="number-of-inputs">Number of inputs</label>
+				<section id="component-info">
+					<div class="card">
+						<div class="row mb-0">
+							<div class="input-field col s12 m6">
+								<input class="mb-0" id="component-name" type="text" autocomplete="off"
+									onkeyup="refreshBoilerplateData()">
+								<label for="component-name">Component name</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input class="mb-0" id="form-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
+								<label for="form-name">Form name</label>
+							</div>
 						</div>
 					</div>
-				</div>
+				</section>
+				<h6 class="grey-text text-darken-1 mt-xl">Inputs informations</h6>
 				<section id="inputs">
-					<h6 class="grey-text text-darken-1 mt-lg">Inputs informations</h6>
-					<div class="card">
+					<div id="input-card-1" class="card">
 						<div class="row mb-0 inputs-informations-card">
 							<div class="input-field col s12 m4">
-								<input class="mb-0" id="input-name" type="text">
-								<label for="input-name">Input name</label>
+								<input class="mb-0" id="input-name-1" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
+								<label for="input-name-1">Input name</label>
 							</div>
 							<div class="input-field col s12 m4">
-								<select>
-									<option value="" disabled selected>Input type</option>
+								<select autocomplete="off">
+									<option value="text" selected>Text</option>
 									<option value="email">Email</option>
 									<option value="password">Password</option>
-									<option value="text">Text</option>
 									<option value="number">Number</option>
 								</select>
+								<label>Input type</label>
 							</div>
 							<div class="input-field col s12 m4">
 								<p>
 									<label>
-										<input type="checkbox">
+										<input type="checkbox" autocomplete="off" onchange="refreshBoilerplateData()">
 										<span>Required</span>
 									</label>
 								</p>
 							</div>
-							<a class="btn-floating btn-small waves-effect waves-light red"><span class="fa fa-times"></span></a>
 						</div>
 					</div>
 				</section>
+				<div class="d-flex justify-content-center">
+					<a class="btn-floating btn-large waves-effect waves-light mt-md mb-xl" onclick="addInputCard()"><span
+							class="fa fa-plus"></span></a>
+				</div>
 			</div>
 			<div class="col s12 l6">
 				<div class="card" id="code-card">
@@ -86,9 +88,7 @@
 					</div>
 					<div class="card-content grey lighten-4 h-100">
 						<div id="preview">
-							1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ut autem ratione nobis delectus
-							illo molestiae vero, voluptates ducimus voluptatum quae mollitia doloremque magnam? Dicta natus deleniti
-							excepturi alias. Quidem.
+							<iframe id="preview-container"></iframe>
 						</div>
 						<div id="template">
 							<pre><code class="html" id="template-code"></code></pre>
@@ -100,9 +100,10 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</main>
 	<script id="template-boilerplate" type="text/x-handlebars-template"></script>
 	<script id="controller-boilerplate" type="text/x-handlebars-template"></script>
+	<script id="input-card-boilerplate" type="text/x-handlebars-template"></script>
 </body>
 
 </html>

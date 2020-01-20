@@ -1,6 +1,8 @@
 $body-bg: #f5f5f5
 $md-spacing: 20px
-$sm-spacing: 10px
+$sm-spacing: $md-spacing / 2
+$lg-spacing: $md-spacing * 2
+$xl-spacing: $lg-spacing * 2
 
 @import ~highlight.js/styles/monokai
 
@@ -21,7 +23,7 @@ $secondary-color: color('deep-purple', 'darken-3')
 body
   background-color: $body-bg 
 
-#template, #controller
+#template, #controller, #preview
   height: 100%
   width: 100%
   pre 
@@ -32,6 +34,11 @@ body
       height: 100%
       width: 100%
       overflow: scroll
+  #preview-container
+    padding: $sm-spacing
+    background-color: white
+    height: 100%
+    width: 100%
 
 .navbar-fixed
   margin-bottom: $sm-spacing
@@ -67,14 +74,55 @@ body
   margin-left: $sm-spacing
   margin-right: $sm-spacing
 
-.mb-0
-  margin-bottom: 0
+.mb
+  &-0
+    margin-bottom: 0
+  &-sm
+    margin-bottom: $sm-spacing
+  &-md
+    margin-bottom: $md-spacing
+  &-lg
+    margin-bottom: $lg-spacing
+  &-xl
+    margin-bottom: $xl-spacing
 
-.mt-lg
-  margin-top: $md-spacing * 2
+.mt
+  &-0
+    margin-top: 0
+  &-sm
+    margin-top: $sm-spacing
+  &-md
+    margin-top: $md-spacing
+  &-lg
+    margin-top: $lg-spacing
+  &-xl
+    margin-top: $xl-spacing
 
-.d-none
-  display: none
+.my
+  &-0
+    margin-top: 0
+    margin-bottom: 0
+  &-sm
+    margin-top: $sm-spacing
+    margin-bottom: $sm-spacing
+  &-md
+    margin-top: $md-spacing
+    margin-bottom: $md-spacing
+  &-lg
+    margin-top: $lg-spacing
+    margin-bottom: $lg-spacing
+  &-xl
+    margin-top: $xl-spacing
+    margin-bottom: $xl-spacing
+
+.d
+  &-none
+    display: none
+  &-flex
+    display: flex
+
+.justify-content-center
+  justify-content: center
 
 .inputs-informations-card
   position: relative
@@ -86,3 +134,6 @@ body
 #inputs
   .card:first-of-type ~ .card 
     margin-top: $md-spacing
+
+iframe
+  border: none
