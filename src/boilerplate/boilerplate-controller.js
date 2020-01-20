@@ -15,9 +15,15 @@ export const renderCode = codeData => {
   hljs.initHighlighting();
 };
 
-export const destroyCode = () => {
+export const renderPreview = () => {
+  const previewContainer = document.getElementById('preview');
+  previewContainer.innerHTML = document.getElementById('template-code').innerText;
+};
+
+export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
+  document.getElementById('preview').innerHTML = '';
 };
 
 export const renderNewInputCard = () => {

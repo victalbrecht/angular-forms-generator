@@ -18,8 +18,9 @@ window.refreshBoilerplateData = () => {
       inputList: boilerplateController.getInputCardsValues()
     };
     boilerplateController.renderCode(codeData);
+    boilerplateController.renderPreview();
   } else
-    boilerplateController.destroyCode();
+    boilerplateController.destroyBoilerplates();
 };
 
 window.deleteInputCard = inputId => { 
