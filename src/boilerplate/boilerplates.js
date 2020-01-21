@@ -13,6 +13,8 @@ export const controllerBoilerplate =
 `import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder{{hasReactiveValidators inputList}} } from '@angular/forms';
 
+import { {{capitalize (camelize formName)}} } from './{{kebabize formName}}.model.ts';
+
 @Component({
   selector: 'app-{{kebabize componentName}}',
   templateUrl: './{{kebabize componentName}}.component.html',
@@ -23,7 +25,7 @@ export class {{capitalize (camelize componentName)}}Component implements OnInit 
 
   constructor(private fb: FormBuilder) { }
 
-  public {{camelize formName}}FormSubmit = ({{camelize formName}}FormValue: any): void => { };
+  public {{camelize formName}}FormSubmit = ({{camelize formName}}FormValue: {{capitalize (camelize formName)}}): void => { };
 
   ngOnInit() { 
     this.{{camelize formName}}Form = this.fb.group({

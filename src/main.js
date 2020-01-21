@@ -1,14 +1,10 @@
 'use strict';
 
-import './bootstrap';
-
 import '@fortawesome/fontawesome-free/js/all';
-import * as JSZip from 'jszip/dist/jszip.min';
-import { saveAs } from 'file-saver';
 
+import './bootstrap';
 import './main.sass';
 import * as boilerplateController from './boilerplate/boilerplate-controller';
-import { kebabizeString } from './utils';
 
 window.refreshBoilerplateData = () => {
   const componentName = document.getElementById('component-name').value;
@@ -30,13 +26,4 @@ window.deleteInputCard = inputId => {
 
 window.addInputCard = () => boilerplateController.renderNewInputCard();
 
-window.exportComponent = () => {
-  const templateCode = boilerplateController.compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
-  const controllerCode = boilerplateController.compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
-  const jszip = new JSZip();
-  const componentName = kebabizeString(window.componentName);
-  jszip.file(`${componentName}.component.html`, templateCode);
-  jszip.file(`${componentName}.component.ts`, controllerCode);
-  jszip.file(`${componentName}.component.css`, '');
-  jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
-};
+window.exportComponent = () => boilerplateController.exportComponent();

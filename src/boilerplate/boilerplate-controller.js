@@ -1,6 +1,10 @@
 import handlebars from 'handlebars/dist/handlebars';
 import hljs from 'highlight.js/lib/index';
 import * as mat from 'materialize-css/dist/js/materialize.min';
+import * as JSZip from 'jszip/dist/jszip.min';
+import { saveAs } from 'file-saver';
+
+import { kebabizeString } from '../utils';
 
 let inputCount = 1;
 
@@ -62,3 +66,18 @@ export const getInputCardsValues = () => {
     };
   });
 };
+
+export const exportComponent = () => {
+  const templateCode = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
+  const controllerCode = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  const modelCode = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
+  const jszip = new JSZip();
+  const componentName = kebabizeString(window.componentName);
+  jszip.file(`${componentName}.component.html`, templateCode);
+  jszip.file(`${componentName}.component.ts`, controllerCode);
+  jszip.file(`${kebabizeString(formName)}.model.ts`, modelCode);
+  jszip.file(`${componentName}.component.css`, '');
+  jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
+};
+
+
