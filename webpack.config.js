@@ -5,7 +5,7 @@ module.exports = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname)
+		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
 		rules: [
@@ -21,10 +21,12 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCSSExtractPlugin({
-			filename: "[name].css"
+			filename: '[name].css',
+			path: path.resolve(__dirname, 'dist')
 		})
 	],
 	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
 		port: 80,
 		watchContentBase: true
 	}
