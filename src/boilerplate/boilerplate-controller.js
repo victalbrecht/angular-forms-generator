@@ -7,6 +7,7 @@ let inputCount = 1;
 export const renderCode = () => {
   document.getElementById('template-code').innerText = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
   document.getElementById('controller-code').innerText = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  document.getElementById('model-code').innerText = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
   document.getElementById('export-component-button').classList.remove('disabled');
   hljs.initHighlighting.called = false;
   hljs.initHighlighting();
@@ -33,6 +34,7 @@ export const renderPreview = () => {
 export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
+  document.getElementById('model-code').innerText = '';
   document.getElementById('preview-container').contentDocument.documentElement.innerHTML = '';
   document.getElementById('export-component-button').classList.add('disabled');
 };
