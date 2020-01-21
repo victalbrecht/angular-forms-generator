@@ -34,7 +34,7 @@ window.exportComponent = () => {
   const templateCode = boilerplateController.compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
   const controllerCode = boilerplateController.compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
   const jszip = new JSZip();
-  const componentName = kebabizeString(document.getElementById('component-name').value);
+  const componentName = kebabizeString(window.componentName);
   jszip.file(`${componentName}.component.html`, templateCode);
   jszip.file(`${componentName}.component.ts`, controllerCode);
   jszip.file(`${componentName}.component.css`, '');

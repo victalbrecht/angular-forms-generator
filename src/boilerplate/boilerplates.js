@@ -11,7 +11,7 @@ export const templateBoilerplate =
 
 export const controllerBoilerplate = 
 `import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder{{hasValidators inputList}} } from '@angular/forms';
 
 @Component({
   selector: 'app-{{kebabize componentName}}',
@@ -28,7 +28,7 @@ export class {{capitalize (camelize componentName)}}Component implements OnInit 
   ngOnInit() { 
     this.{{camelize formName}}Form = this.fb.group({
       {{#each inputList}}
-      {{camelize name}}: ['',  [{{#if required}}Validators.required{{/if}}]],
+      {{camelize name}}: {{{validators this}}},
       {{/each}}
     });
   }

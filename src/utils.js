@@ -5,3 +5,16 @@ export const kebabizeString = string => normalizeString(string.trim()).replace(/
 export const normalizeString = string => string.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, '');
 
 export const capitalizeFirstLetter = string => string.trim().replace(/^./, string[0].toUpperCase());
+
+export const generateReactiveFormValidators = inputInfo => {
+  if (inputInfo.type == 'Email' && inputInfo.required)
+    return `['',  [Validators.required, Validators.email]]`;
+  else if (inputInfo.type == 'Email')
+    return `['',  [Validators.email]]`;
+  else if (inputInfo.required)
+    return `['',  [Validators.required]]`;
+  else
+    return `''`;
+};
+
+export const hasReactiveFormValidators = inputList => inputList.some(input => input.type == 'Email' || input.required) ? ', Validators' : null;
