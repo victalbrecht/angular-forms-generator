@@ -1,14 +1,17 @@
 import handlebars from 'handlebars/dist/handlebars';
 import hljs from 'highlight.js/lib/index';
-
 import * as mat from 'materialize-css/dist/js/materialize.min';
-import { camelizeString } from '../utils';
+import * as JSZip from 'jszip/dist/jszip.min';
+import { saveAs } from 'file-saver';
+
+import { kebabizeString } from '../utils';
 
 let inputCount = 1;
 
 export const renderCode = () => {
   document.getElementById('template-code').innerText = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
   document.getElementById('controller-code').innerText = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  document.getElementById('model-code').innerText = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
   document.getElementById('export-component-button').classList.remove('disabled');
   hljs.initHighlighting.called = false;
   hljs.initHighlighting();
@@ -35,14 +38,15 @@ export const renderPreview = () => {
 export const destroyBoilerplates = () => {
   document.getElementById('template-code').innerText = '';
   document.getElementById('controller-code').innerText = '';
+  document.getElementById('model-code').innerText = '';
   document.getElementById('preview-container').contentDocument.documentElement.innerHTML = '';
   document.getElementById('export-component-button').classList.add('disabled');
 };
 
 export const renderNewInputCard = () => {
   inputCount++;
-  const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML);
-  const domParser = new DOMParser().parseFromString(newInputCard({ inputCardId: inputCount }), 'text/html');
+  const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML)({ inputCardId: inputCount });
+  const domParser = new DOMParser().parseFromString(newInputCard, 'text/html');
   document.getElementById('inputs').appendChild(domParser.body.children[0]);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputCount} select`));
 };
@@ -56,10 +60,24 @@ export const getInputCardsValues = () => {
   const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
   return filledInputCards.map(inputCard => {
     return {
-      name: camelizeString(inputCard.children[0].children[0].children[0].value),
-      rawName: inputCard.children[0].children[0].children[0].value,
-      type: camelizeString(inputCard.children[0].children[1].children[0].children[0].value),
+      name: inputCard.children[0].children[0].children[0].value.trim(),
+      type: inputCard.children[0].children[1].children[0].children[0].value,
       required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
     };
   });
 };
+
+export const exportComponent = () => {
+  const templateCode = compileBoilerplate(document.getElementById('template-boilerplate').innerHTML);
+  const controllerCode = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
+  const modelCode = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
+  const jszip = new JSZip();
+  const componentName = kebabizeString(window.componentName);
+  jszip.file(`${componentName}.component.html`, templateCode);
+  jszip.file(`${componentName}.component.ts`, controllerCode);
+  jszip.file(`${kebabizeString(formName)}.model.ts`, modelCode);
+  jszip.file(`${componentName}.component.css`, '');
+  jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
+};
+
+
