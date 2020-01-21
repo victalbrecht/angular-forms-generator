@@ -1,3 +1,10 @@
+export const typeScriptTypes = {
+  'text': 'string',
+  'email': 'string',
+  'password': 'string',
+  'number': 'number'
+};
+
 export const camelizeString = string => normalizeString(string.trim()).replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => index == 0 ? word.toLowerCase() : word.toUpperCase()).replace(/\s+/g, '');
 
 export const kebabizeString = string => normalizeString(string.trim()).replace(/\s+/g, '-').toLowerCase();

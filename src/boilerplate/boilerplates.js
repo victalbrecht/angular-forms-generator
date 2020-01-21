@@ -11,7 +11,7 @@ export const templateBoilerplate =
 
 export const controllerBoilerplate = 
 `import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder{{hasValidators inputList}} } from '@angular/forms';
+import { FormGroup, FormBuilder{{hasReactiveValidators inputList}} } from '@angular/forms';
 
 @Component({
   selector: 'app-{{kebabize componentName}}',
@@ -28,10 +28,19 @@ export class {{capitalize (camelize componentName)}}Component implements OnInit 
   ngOnInit() { 
     this.{{camelize formName}}Form = this.fb.group({
       {{#each inputList}}
-      {{camelize name}}: {{{validators this}}},
+      {{camelize name}}: {{{getReactiveValidators this}}},
       {{/each}}
     });
   }
+}`;
+
+export const modelBoilerplate =
+`export class {{capitalize (camelize formName)}} {
+  constructor (
+    {{#each inputList}}
+    public {{camelize name}}: {{getTypeScriptType (camelize type)}},
+    {{/each}}
+  ) { }
 }`;
 
 export const inputCardBoilerplate = 

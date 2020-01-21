@@ -8,8 +8,9 @@ import * as utils from './utils';
 handlebars.registerHelper('capitalize', utils.capitalizeFirstLetter);
 handlebars.registerHelper('camelize', utils.camelizeString);
 handlebars.registerHelper('kebabize', utils.kebabizeString);
-handlebars.registerHelper('validators', utils.generateReactiveFormValidators);
-handlebars.registerHelper('hasValidators', utils.hasReactiveFormValidators);
+handlebars.registerHelper('getReactiveValidators', utils.generateReactiveFormValidators);
+handlebars.registerHelper('hasReactiveValidators', utils.hasReactiveFormValidators);
+handlebars.registerHelper('getTypeScriptType', type => utils.typeScriptTypes.type);
 
 document.addEventListener('DOMContentLoaded', () =>  {
   mat.FormSelect.init(document.querySelectorAll('select'));
