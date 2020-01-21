@@ -1,10 +1,11 @@
 'use strict';
 
+import './bootstrap';
+
 import '@fortawesome/fontawesome-free/js/all';
 import * as JSZip from 'jszip/dist/jszip.min';
 import { saveAs } from 'file-saver';
 
-import './bootstrap';
 import './main.sass';
 import * as boilerplateController from './boilerplate/boilerplate-controller';
 import { kebabizeString } from './utils';

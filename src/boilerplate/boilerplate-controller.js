@@ -1,6 +1,5 @@
 import handlebars from 'handlebars/dist/handlebars';
 import hljs from 'highlight.js/lib/index';
-
 import * as mat from 'materialize-css/dist/js/materialize.min';
 
 let inputCount = 1;

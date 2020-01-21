@@ -1,12 +1,3 @@
-import handlebars from 'handlebars/dist/handlebars';
-
-import * as utils from '../utils';
-
-handlebars.registerHelper('capitalize', utils.capitalizeFirstLetter);
-handlebars.registerHelper('camelize', utils.camelizeString);
-handlebars.registerHelper('kebabize', utils.kebabizeString);
-
-
 export const templateBoilerplate = 
 `<form [formGroup]="{{camelize formName}}Form" (ngSubmit)="{{camelize formName}}FormSubmit({{camelize formName}}Form.value)">
   {{#each inputList}}
