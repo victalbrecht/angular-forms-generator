@@ -30,7 +30,7 @@ export class {{capitalize (camelize componentName)}}Component implements OnInit 
   ngOnInit() { 
     this.{{camelize formName}}Form = this.fb.group({
       {{#each inputList}}
-      {{camelize name}}: {{{getReactiveValidators this}}},
+      {{camelize name}}: {{{getReactiveValidators this}}}{{#unless @last}},{{/unless}}
       {{/each}}
     });
   }
@@ -40,7 +40,7 @@ export const modelBoilerplate =
 `export class {{capitalize (camelize formName)}} {
   constructor (
     {{#each inputList}}
-    public {{camelize name}}: {{getTypeScriptType (camelize type)}},
+    public {{camelize name}}: {{getTypeScriptType (camelize type)}}{{#unless @last}},{{/unless}}
     {{/each}}
   ) { }
 }`;
