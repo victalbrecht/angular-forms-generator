@@ -2,7 +2,6 @@ import handlebars from 'handlebars/dist/handlebars';
 import hljs from 'highlight.js/lib/index';
 
 import * as mat from 'materialize-css/dist/js/materialize.min';
-import { camelizeString } from '../utils';
 
 let inputCount = 1;
 
@@ -41,8 +40,8 @@ export const destroyBoilerplates = () => {
 
 export const renderNewInputCard = () => {
   inputCount++;
-  const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML);
-  const domParser = new DOMParser().parseFromString(newInputCard({ inputCardId: inputCount }), 'text/html');
+  const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML)({ inputCardId: inputCount });
+  const domParser = new DOMParser().parseFromString(newInputCard, 'text/html');
   document.getElementById('inputs').appendChild(domParser.body.children[0]);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputCount} select`));
 };
@@ -56,9 +55,8 @@ export const getInputCardsValues = () => {
   const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
   return filledInputCards.map(inputCard => {
     return {
-      name: camelizeString(inputCard.children[0].children[0].children[0].value),
-      rawName: inputCard.children[0].children[0].children[0].value,
-      type: camelizeString(inputCard.children[0].children[1].children[0].children[0].value),
+      name: inputCard.children[0].children[0].children[0].value.trim(),
+      type: inputCard.children[0].children[1].children[0].children[0].value,
       required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
     };
   });
