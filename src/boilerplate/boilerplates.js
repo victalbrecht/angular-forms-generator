@@ -1,37 +1,48 @@
 export const templateBoilerplate = 
-`<form [formGroup]="{{formName}}Form" (ngSubmit)="{{formName}}FormSubmit({{formName}}Form.value)">
+`<form [formGroup]="{{camelize formName}}Form" (ngSubmit)="{{camelize formName}}FormSubmit({{camelize formName}}Form.value)">
   {{#each inputList}}
   <div class="form-group">
-    <label for="{{name}}">{{rawName}}</label>
-    <input type="{{type}}" class="form-control" id="{{name}}" formControlName="{{name}}"{{#if required}} required{{/if}}>
+    <label for="{{camelize name}}">{{name}}</label>
+    <input type="{{camelize type}}" class="form-control" id="{{camelize name}}" formControlName="{{camelize name}}"{{#if required}} required{{/if}}>
   </div>
   {{/each}}
-  <button type="submit" class="btn btn-primary mt-2" [disabled]="!{{formName}}Form.valid">Send</button>
+  <button type="submit" class="btn btn-primary mt-2" [disabled]="!{{camelize formName}}Form.valid">Send</button>
 </form>`;
 
 export const controllerBoilerplate = 
 `import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder{{hasReactiveValidators inputList}} } from '@angular/forms';
+
+import { {{capitalize (camelize formName)}} } from './{{kebabize formName}}.model.ts';
 
 @Component({
-  selector: 'app-{{componentName}}',
-  templateUrl: './{{componentName}}.component.html',
-  styleUrls: ['./{{componentName}}.component.css']
+  selector: 'app-{{kebabize componentName}}',
+  templateUrl: './{{kebabize componentName}}.component.html',
+  styleUrls: ['./{{kebabize componentName}}.component.css']
 })
-export class {{componentName}}Component implements OnInit {
-  public {{formName}}Form: FormGroup;
+export class {{capitalize (camelize componentName)}}Component implements OnInit {
+  public {{camelize formName}}Form: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  public {{formName}}FormSubmit = ({{formName}}FormValue: any): void => { };
+  public {{camelize formName}}FormSubmit = ({{camelize formName}}FormValue: {{capitalize (camelize formName)}}): void => { };
 
   ngOnInit() { 
-    this.{{formName}}Form = this.fb.group({
+    this.{{camelize formName}}Form = this.fb.group({
       {{#each inputList}}
-      {{name}}: ['',  [{{#if required}}Validators.required{{/if}}]],
+      {{camelize name}}: {{{getReactiveValidators this}}}{{#unless @last}},{{/unless}}
       {{/each}}
     });
   }
+}`;
+
+export const modelBoilerplate =
+`export class {{capitalize (camelize formName)}} {
+  constructor (
+    {{#each inputList}}
+    public {{camelize name}}: {{getTypeScriptType (camelize type)}}{{#unless @last}},{{/unless}}
+    {{/each}}
+  ) { }
 }`;
 
 export const inputCardBoilerplate = 

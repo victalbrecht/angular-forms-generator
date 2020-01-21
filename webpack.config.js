@@ -4,8 +4,8 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
 	output: {
-		filename: '[name].js',
-		path: path.resolve(__dirname)
+		filename: 'bundle.min.js',
+		path: path.resolve(__dirname, 'dist')
 	},
 	module: {
 		rules: [
@@ -21,10 +21,12 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCSSExtractPlugin({
-			filename: "[name].css"
+			filename: 'styles.min.css',
+			path: path.resolve(__dirname, 'dist')
 		})
 	],
 	devServer: {
+		contentBase: path.join(__dirname, 'dist'),
 		port: 80,
 		watchContentBase: true
 	}
