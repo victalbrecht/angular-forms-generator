@@ -5,9 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
 	output: {
-		filename: 'main.[hash].js',
+		filename: '[name].[hash].js',
 		path: path.resolve(__dirname, 'dist')
 	},
+	optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 	module: {
 		rules: [
 			{
@@ -22,7 +27,7 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCSSExtractPlugin({
-			filename: 'main.[hash].css',
+			filename: '[name].[hash].css',
 			path: path.resolve(__dirname, 'dist')
 		}),
 		new HtmlWebpackPlugin({
