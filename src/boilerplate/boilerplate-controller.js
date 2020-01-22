@@ -45,17 +45,19 @@ export const destroyBoilerplates = () => {
   document.getElementById('export-component-button').classList.add('disabled');
 };
 
-export const renderNewInputCard = () => {
+export const renderNewInputCard = async () => {
   inputCount++;
   const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML)({ inputCardId: inputCount });
-  const domParser = new DOMParser().parseFromString(newInputCard, 'text/html');
-  document.getElementById('inputs').appendChild(domParser.body.children[0]);
+  const newInputCardRef = new DOMParser().parseFromString(newInputCard, 'text/html').body.children[0];
+  document.getElementById('inputs').appendChild(newInputCardRef);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputCount} select`));
+  await utils.wait(500);
+  newInputCardRef.classList.remove('slide-from-left');
 };
 
 export const destroyInputCard = async inputId => {
   const inputCard = document.getElementById(`input-card-${inputId}`);
-  inputCard.classList.add('slide');
+  inputCard.classList.add('slide-to-left');
   await utils.wait(500);
   inputCard.parentNode.removeChild(inputCard);
 };
