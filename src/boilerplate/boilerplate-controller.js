@@ -22,6 +22,7 @@ export const compileBoilerplate = boilerplateRef => {
   const codeData = {
     componentName: window.componentName,
     formName: window.formName,
+    modelName: window.modelName,
     stylesheetLanguage: document.getElementById('style-sheet-language').value,
     inputList: getInputCardsValues()
   };
@@ -60,7 +61,6 @@ export const destroyInputCard = async inputId => {
   const inputCard = document.getElementById(`input-card-${inputId}`);
   inputCard.classList.add('slide-to-left');
   await utils.wait(500);
-  console.log(inputCard.parentNode)
   inputCard.parentNode.removeChild(inputCard);
 };
 

@@ -27,14 +27,18 @@
 				<section id="component-info">
 					<div class="card">
 						<div class="row mb-0">
-							<div class="input-field col s12 m3">
+							<div class="input-field col s12 m4">
 								<input class="mb-0" id="component-name" type="text" autocomplete="off"
 									onkeyup="refreshBoilerplateData()">
 								<label for="component-name">Component name</label>
 							</div>
-							<div class="input-field col s12 m3">
+							<div class="input-field col s12 m4">
 								<input class="mb-0" id="form-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
 								<label for="form-name">Form name</label>
+							</div>
+							<div class="input-field col s12 m4">
+								<input class="mb-0" id="model-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
+								<label for="model-name">Model name</label>
 							</div>
 							<div class="input-field col s12 m3">
 								<select autocomplete="off" onchange="refreshBoilerplateData()" disabled>
@@ -107,7 +111,8 @@
 					</div>
 					<div class="card-content grey lighten-4 h-100" id="tabs-containers">
 						<div id="utility-header" class="d-flex justify-content-end">
-							<a class="waves-effect waves-light btn disabled" onclick="exportComponent()" id="export-component-button"><span class="fa fa-file-export"></span> Export component</a>
+							<a class="waves-effect waves-light btn disabled" onclick="exportComponent()"
+								id="export-component-button"><span class="fa fa-file-export"></span> Export component</a>
 						</div>
 						<div id="preview">
 							<iframe id="preview-container"></iframe>
