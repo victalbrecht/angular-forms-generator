@@ -32,7 +32,7 @@ export const renderPreview = () => {
   previewContainer.open();
   previewContainer.write('<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">');
   previewContainer.write(document.getElementById('template-code').innerText);
-  previewContainer.write(`<script>document.querySelector('button').addEventListener('click', event => event.preventDefault());</script>`);
+  previewContainer.write(`<script type="text/javascript">document.querySelector('button').addEventListener('click', event => event.preventDefault());</script>`);
   previewContainer.body.style.padding = '10px';
   previewContainer.close();
 };
