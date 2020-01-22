@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
@@ -23,10 +24,15 @@ module.exports = {
 		new MiniCSSExtractPlugin({
 			filename: 'main.[hash].css',
 			path: path.resolve(__dirname, 'dist')
+		}),
+		new HtmlWebpackPlugin({
+			hash: true,
+			template: './src/index.html',
+			filename: 'index.html'
 		})
 	],
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		contentBase: path.join(__dirname, 'src'),
 		port: 80,
 		watchContentBase: true
 	}
