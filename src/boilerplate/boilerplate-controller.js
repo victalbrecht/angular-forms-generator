@@ -85,7 +85,7 @@ export const exportComponent = () => {
   const componentFolder = jszip.folder(componentName);
   componentFolder.file(`${componentName}.component.html`, templateCode);
   componentFolder.file(`${componentName}.component.ts`, controllerCode);
-  componentFolder.file(`${utils.kebabizeString(formName)}.model.ts`, modelCode);
+  componentFolder.file(`${utils.kebabizeString(modelName)}.model.ts`, modelCode);
   componentFolder.file(`${componentName}.component.${stylesheetLanguage}`, '');
   jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
 };
