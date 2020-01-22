@@ -22,6 +22,7 @@ export const compileBoilerplate = boilerplateRef => {
   const codeData = {
     componentName: window.componentName,
     formName: window.formName,
+    stylesheetLanguage: document.getElementById('style-sheet-language').value,
     inputList: getInputCardsValues()
   };
   return handlebars.compile(boilerplateRef)(codeData);
@@ -59,11 +60,12 @@ export const destroyInputCard = async inputId => {
   const inputCard = document.getElementById(`input-card-${inputId}`);
   inputCard.classList.add('slide-to-left');
   await utils.wait(500);
+  console.log(inputCard.parentNode)
   inputCard.parentNode.removeChild(inputCard);
 };
 
 export const getInputCardsValues = () => {
-  const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
+  const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.querySelector('input[type=text]').value.trim());
   return filledInputCards.map(inputCard => {
     return {
       name: inputCard.querySelector('input[type=text]').value.trim(),

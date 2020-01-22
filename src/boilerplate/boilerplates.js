@@ -18,7 +18,7 @@ import { {{capitalize (camelize formName)}} } from './{{kebabize formName}}.mode
 @Component({
   selector: 'app-{{kebabize componentName}}',
   templateUrl: './{{kebabize componentName}}.component.html',
-  styleUrls: ['./{{kebabize componentName}}.component.css']
+  styleUrls: ['./{{kebabize componentName}}.component.{{stylesheetLanguage}}']
 })
 export class {{capitalize (camelize componentName)}}Component implements OnInit {
   public {{camelize formName}}Form: FormGroup;

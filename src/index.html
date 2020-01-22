@@ -27,14 +27,30 @@
 				<section id="component-info">
 					<div class="card">
 						<div class="row mb-0">
-							<div class="input-field col s12 m6">
+							<div class="input-field col s12 m3">
 								<input class="mb-0" id="component-name" type="text" autocomplete="off"
 									onkeyup="refreshBoilerplateData()">
 								<label for="component-name">Component name</label>
 							</div>
-							<div class="input-field col s12 m6">
+							<div class="input-field col s12 m3">
 								<input class="mb-0" id="form-name" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">
 								<label for="form-name">Form name</label>
+							</div>
+							<div class="input-field col s12 m3">
+								<select autocomplete="off" onchange="refreshBoilerplateData()" disabled>
+									<option value="reactive" selected>Reactive</option>
+									<option value="template-driven">Template-driven</option>
+								</select>
+								<label>Form type</label>
+							</div>
+							<div class="input-field col s12 m3">
+								<select id="style-sheet-language" autocomplete="off" onchange="refreshBoilerplateData()">
+									<option value="css" selected>CSS</option>
+									<option value="sass">SASS</option>
+									<option value="scss">SCSS</option>
+									<option value="less">LESS</option>
+								</select>
+								<label>Style sheet language</label>
 							</div>
 						</div>
 					</div>
