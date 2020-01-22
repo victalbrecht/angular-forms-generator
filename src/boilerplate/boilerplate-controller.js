@@ -32,6 +32,8 @@ export const renderPreview = () => {
   previewContainer.open();
   previewContainer.write('<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">');
   previewContainer.write(document.getElementById('template-code').innerText);
+  previewContainer.write(`<script type="text/javascript">document.querySelector('button').addEventListener('click', event => event.preventDefault());</script>`);
+  previewContainer.body.style.padding = '10px';
   previewContainer.close();
 };
 
@@ -60,9 +62,9 @@ export const getInputCardsValues = () => {
   const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
   return filledInputCards.map(inputCard => {
     return {
-      name: inputCard.children[0].children[0].children[0].value.trim(),
-      type: inputCard.children[0].children[1].children[0].children[0].value,
-      required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
+      name: inputCard.querySelector('input[type=text]').value.trim(),
+      type: inputCard.querySelector('select').value,
+      required: inputCard.querySelector('input[type=checkbox]').checked
     };
   });
 };
