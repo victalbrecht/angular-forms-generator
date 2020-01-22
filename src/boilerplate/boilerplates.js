@@ -53,7 +53,7 @@ export const inputCardBoilerplate =
     <label for="input-name-{{inputCardId}}">Input name</label>
   </div>
   <div class="input-field col s12 m4">
-    <select autocomplete="off">
+    <select autocomplete="off" onchange="refreshBoilerplateData()">
       <option value="text" selected>Text</option>
       <option value="email">Email</option>
       <option value="password">Password</option>

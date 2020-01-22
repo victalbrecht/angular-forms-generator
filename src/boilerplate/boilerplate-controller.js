@@ -61,9 +61,9 @@ export const getInputCardsValues = () => {
   const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
   return filledInputCards.map(inputCard => {
     return {
-      name: inputCard.children[0].children[0].children[0].value.trim(),
-      type: inputCard.children[0].children[1].children[0].children[0].value,
-      required: inputCard.children[0].children[2].children[0].children[0].children[0].checked
+      name: inputCard.querySelector('input[type=text]').value.trim(),
+      type: inputCard.querySelector('select').value,
+      required: inputCard.querySelector('input[type=checkbox]').checked
     };
   });
 };
