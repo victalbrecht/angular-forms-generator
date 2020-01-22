@@ -81,10 +81,12 @@ export const exportComponent = () => {
   const modelCode = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
   const jszip = new JSZip();
   const componentName = utils.kebabizeString(window.componentName);
-  jszip.file(`${componentName}.component.html`, templateCode);
-  jszip.file(`${componentName}.component.ts`, controllerCode);
-  jszip.file(`${utils.kebabizeString(formName)}.model.ts`, modelCode);
-  jszip.file(`${componentName}.component.css`, '');
+  const stylesheetLanguage = document.getElementById('style-sheet-language').value;
+  const componentFolder = jszip.folder(componentName);
+  componentFolder.file(`${componentName}.component.html`, templateCode);
+  componentFolder.file(`${componentName}.component.ts`, controllerCode);
+  componentFolder.file(`${utils.kebabizeString(formName)}.model.ts`, modelCode);
+  componentFolder.file(`${componentName}.component.${stylesheetLanguage}`, '');
   jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
 };
 
