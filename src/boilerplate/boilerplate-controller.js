@@ -55,7 +55,8 @@ export const renderNewInputCard = () => {
 
 export const destroyInputCard = inputId => {
   const inputCard = document.querySelector(`#input-card-${inputId}`);
-  inputCard.parentNode.removeChild(inputCard);
+  inputCard.classList.add('slide');
+  setTimeout(() => inputCard.parentNode.removeChild(inputCard), 500);
 };
 
 export const getInputCardsValues = () => {
