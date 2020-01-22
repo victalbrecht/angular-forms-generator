@@ -22,6 +22,8 @@ export const compileBoilerplate = boilerplateRef => {
   const codeData = {
     componentName: window.componentName,
     formName: window.formName,
+    modelName: window.modelName,
+    stylesheetLanguage: document.getElementById('style-sheet-language').value,
     inputList: getInputCardsValues()
   };
   return handlebars.compile(boilerplateRef)(codeData);
@@ -63,7 +65,7 @@ export const destroyInputCard = async inputId => {
 };
 
 export const getInputCardsValues = () => {
-  const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.children[0].children[0].children[0].value.trim());
+  const filledInputCards = [...document.getElementById('inputs').children].filter(inputCard => inputCard.querySelector('input[type=text]').value.trim());
   return filledInputCards.map(inputCard => {
     return {
       name: inputCard.querySelector('input[type=text]').value.trim(),
@@ -79,10 +81,12 @@ export const exportComponent = () => {
   const modelCode = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
   const jszip = new JSZip();
   const componentName = utils.kebabizeString(window.componentName);
-  jszip.file(`${componentName}.component.html`, templateCode);
-  jszip.file(`${componentName}.component.ts`, controllerCode);
-  jszip.file(`${utils.kebabizeString(formName)}.model.ts`, modelCode);
-  jszip.file(`${componentName}.component.css`, '');
+  const stylesheetLanguage = document.getElementById('style-sheet-language').value;
+  const componentFolder = jszip.folder(componentName);
+  componentFolder.file(`${componentName}.component.html`, templateCode);
+  componentFolder.file(`${componentName}.component.ts`, controllerCode);
+  componentFolder.file(`${utils.kebabizeString(modelName)}.model.ts`, modelCode);
+  componentFolder.file(`${componentName}.component.${stylesheetLanguage}`, '');
   jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
 };
 

@@ -14,9 +14,9 @@ export const normalizeString = string => string.trim().normalize("NFD").replace(
 export const capitalizeFirstLetter = string => string.trim().replace(/^./, string[0].toUpperCase());
 
 export const generateReactiveFormValidators = inputInfo => {
-  if (inputInfo.type == 'Email' && inputInfo.required)
+  if (inputInfo.type == 'email' && inputInfo.required)
     return `['',  [Validators.required, Validators.email]]`;
-  else if (inputInfo.type == 'Email')
+  else if (inputInfo.type == 'email')
     return `['',  [Validators.email]]`;
   else if (inputInfo.required)
     return `['',  [Validators.required]]`;
@@ -24,6 +24,6 @@ export const generateReactiveFormValidators = inputInfo => {
     return `''`;
 };
 
-export const hasReactiveFormValidators = inputList => inputList.some(input => input.type == 'Email' || input.required) ? ', Validators' : null;
+export const hasReactiveFormValidators = inputList => inputList.some(input => input.type == 'email' || input.required) ? ', Validators' : null;
 
 export const wait = delay => new Promise(resolve => setTimeout(() => resolve(), delay));
