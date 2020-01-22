@@ -4,7 +4,7 @@ import * as mat from 'materialize-css/dist/js/materialize.min';
 import * as JSZip from 'jszip/dist/jszip.min';
 import { saveAs } from 'file-saver';
 
-import { kebabizeString } from '../utils';
+import * as utils from '../utils';
 
 let inputCount = 1;
 
@@ -45,16 +45,20 @@ export const destroyBoilerplates = () => {
   document.getElementById('export-component-button').classList.add('disabled');
 };
 
-export const renderNewInputCard = () => {
+export const renderNewInputCard = async () => {
   inputCount++;
   const newInputCard = handlebars.compile(document.getElementById('input-card-boilerplate').innerHTML)({ inputCardId: inputCount });
-  const domParser = new DOMParser().parseFromString(newInputCard, 'text/html');
-  document.getElementById('inputs').appendChild(domParser.body.children[0]);
+  const newInputCardRef = new DOMParser().parseFromString(newInputCard, 'text/html').body.children[0];
+  document.getElementById('inputs').appendChild(newInputCardRef);
   mat.FormSelect.init(document.querySelector(`#input-card-${inputCount} select`));
+  await utils.wait(500);
+  newInputCardRef.classList.remove('slide-from-left');
 };
 
-export const destroyInputCard = inputId => {
-  const inputCard = document.querySelector(`#input-card-${inputId}`);
+export const destroyInputCard = async inputId => {
+  const inputCard = document.getElementById(`input-card-${inputId}`);
+  inputCard.classList.add('slide-to-left');
+  await utils.wait(500);
   inputCard.parentNode.removeChild(inputCard);
 };
 
@@ -74,10 +78,10 @@ export const exportComponent = () => {
   const controllerCode = compileBoilerplate(document.getElementById('controller-boilerplate').innerHTML);
   const modelCode = compileBoilerplate(document.getElementById('model-boilerplate').innerHTML);
   const jszip = new JSZip();
-  const componentName = kebabizeString(window.componentName);
+  const componentName = utils.kebabizeString(window.componentName);
   jszip.file(`${componentName}.component.html`, templateCode);
   jszip.file(`${componentName}.component.ts`, controllerCode);
-  jszip.file(`${kebabizeString(formName)}.model.ts`, modelCode);
+  jszip.file(`${utils.kebabizeString(formName)}.model.ts`, modelCode);
   jszip.file(`${componentName}.component.css`, '');
   jszip.generateAsync({ type: 'blob' }).then(content => saveAs(content, `${componentName}-component.zip`));
 };

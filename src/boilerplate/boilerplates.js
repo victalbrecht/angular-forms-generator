@@ -46,7 +46,7 @@ export const modelBoilerplate =
 }`;
 
 export const inputCardBoilerplate = 
-`<div class="card" id="input-card-{{inputCardId}}">
+`<div class="card slide-from-left" id="input-card-{{inputCardId}}">
 <div class="row mb-0 inputs-informations-card">
   <div class="input-field col s12 m4">
     <input class="mb-0" id="input-name-{{inputCardId}}" type="text" autocomplete="off" onkeyup="refreshBoilerplateData()">

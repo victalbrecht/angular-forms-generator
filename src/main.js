@@ -19,8 +19,8 @@ window.refreshBoilerplateData = () => {
     boilerplateController.destroyBoilerplates();
 };
 
-window.deleteInputCard = inputId => {
-  boilerplateController.destroyInputCard(inputId);
+window.deleteInputCard = async inputId => {
+  await boilerplateController.destroyInputCard(inputId);
   refreshBoilerplateData();
 };
 

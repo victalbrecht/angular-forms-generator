@@ -25,3 +25,5 @@ export const generateReactiveFormValidators = inputInfo => {
 };
 
 export const hasReactiveFormValidators = inputList => inputList.some(input => input.type == 'Email' || input.required) ? ', Validators' : null;
+
+export const wait = delay => new Promise(resolve => setTimeout(() => resolve(), delay));

@@ -143,3 +143,22 @@ body
 
 iframe
   border: none
+
+.slide
+  &-to-left
+    animation: slide-to-left .5s
+  &-from-left
+    animation: slide-from-left .5s
+
+@keyframes slide-to-left
+  100%
+    transform: translateX(-100%)
+    opacity: 0
+
+@keyframes slide-from-left
+  0%
+    transform: translateX(-100%)
+    opacity: 0
+  100%
+    transform: translateX(0%)
+    opacity: 1
