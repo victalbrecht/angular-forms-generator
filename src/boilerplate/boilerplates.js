@@ -13,7 +13,7 @@ export const controllerBoilerplate =
 `import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder{{hasReactiveValidators inputList}} } from '@angular/forms';
 
-import { {{capitalize (camelize modelName)}} } from './{{kebabize modelName}}.model.ts';
+import { {{capitalize (camelize modelName)}} } from './{{kebabize modelName}}.model';
 
 @Component({
   selector: 'app-{{kebabize componentName}}',
